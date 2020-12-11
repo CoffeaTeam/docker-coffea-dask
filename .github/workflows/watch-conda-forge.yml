@@ -1,0 +1,44 @@
+name: Check for new versions of Dask/Distributed on Conda Forge
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    if: github.repository == 'coffeateam/docker-coffea-dask'
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get latest Coffea version
+        id: latest_version
+        uses: jacobtomlinson/gha-anaconda-package-version@0.1.1
+        with:
+          org: "conda-forge"
+          package: "dask"
+      - name: Find and Replace Dask
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "dask/"
+          find: "dask==.* "
+          replace: "dask==${{ steps.latest_version.outputs.version }} "
+      - name: Find and Replace Distributed
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "dask/"
+          find: "distributed==.* "
+          replace: "distributed==${{ steps.latest_version.outputs.version }} "
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update Dask & Distributed version to ${{ steps.latest_version.outputs.version }}"
+          title: "Update Dask & Distributed version to ${{ steps.latest_version.outputs.version }}"
+          reviewers: "oshadura"
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          branch: "upgrade-coffea-version"
+          body: |
+            A new Dask & Distributed version has been detected.
+
+            Updated `Dockerfile`s to use `${{ steps.latest_version.outputs.version }}`.
