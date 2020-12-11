@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Get latest Coffea version
+      - name: Get latest Dask version
         id: latest_version
         uses: jacobtomlinson/gha-anaconda-package-version@0.1.1
         with:
@@ -21,8 +21,8 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "dask/"
-          find: "dask==.* "
-          replace: "dask==${{ steps.latest_version.outputs.version }} "
+          find: "dask[dataframe]==.* "
+          replace: "dask[dataframe]==${{ steps.latest_version.outputs.version }} "
       - name: Find and Replace Distributed
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
