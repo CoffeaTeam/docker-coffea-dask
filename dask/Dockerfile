@@ -7,7 +7,7 @@ RUN conda install --yes --freeze-installed \
       python-blosc \
       cytoolz \
       bokeh==2.2.3 \
-      dask[dataframe]==2.30.0 \
+      dask==2.30.0 \
       distributed==2.30.0 \
       nomkl \
       scipy==1.5.3 \
@@ -15,6 +15,5 @@ RUN conda install --yes --freeze-installed \
       jupyter-server-proxy \
       && conda clean --all -f -y \
       && conda build purge-all
-
 
 ENTRYPOINT ["tini", "-g", "--"]

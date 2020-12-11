@@ -21,8 +21,8 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "dask/"
-          find: "dask[dataframe]==.* "
-          replace: "dask[dataframe]==${{ steps.latest_version.outputs.version }} "
+          find: "dask==.* "
+          replace: "dask==${{ steps.latest_version.outputs.version }} "
       - name: Find and Replace Distributed
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
