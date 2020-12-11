@@ -4,7 +4,6 @@ FROM coffeateam/coffea-base:latest
 RUN conda install --yes --freeze-installed \
       -c conda-forge \
       conda-build \
-      python==3.8.* \
       python-blosc \
       cytoolz \
       bokeh==2.2.3 \
