@@ -27,7 +27,9 @@ jobs:
     - name: Push image
       run: |
         IMAGE_ID=$DOCKER_ORG/$IMAGE_NAME
-        VERSION=$(docker run temp-image python -c "import coffea; print(coffea.__version__)")
+        BASE_VERSION=$(docker run temp-image python -c "import coffea; print(coffea.__version__)")
+        BUILD=$(git rev-parse --short HEAD)
+        VERSION=${BASE_VERSION}+g${BUILD}
 
         echo IMAGE_ID=$IMAGE_ID
         echo VERSION=$VERSION
