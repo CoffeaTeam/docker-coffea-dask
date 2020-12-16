@@ -1,0 +1,34 @@
+# Only test building images
+name: PullRequest
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  DOCKER_ORG: coffeateam
+  GITHUB_SHA: ${{ github.sha }}
+  GITHUB_REF: ${{ github.ref }}
+
+jobs:
+
+  matrix-build:
+    strategy:
+      fail-fast: false
+      matrix:
+        IMAGE: [docker-coffea-dask]
+    name: ${{ matrix.IMAGE }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build Image
+      run: |
+        cd dask
+        docker build -t ${DOCKER_ORG}/${{ matrix.IMAGE }}:PR .
+
+    - name: Export Full Conda Environment
+      run: |
+        docker run ${DOCKER_ORG}/${{ matrix.IMAGE }}:PR conda list --export

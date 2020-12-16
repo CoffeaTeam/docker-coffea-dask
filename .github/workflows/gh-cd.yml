@@ -1,0 +1,41 @@
+name: Publish images
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOCKER_ORG: coffeateam
+  IMAGE_NAME: coffea-dask
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build Image
+      run: |
+        docker build -t temp-image dask
+
+    - name: Log into registry
+      run: echo "${{ secrets.DOCKERHUB_ACCESS_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_ACCOUNT }} --password-stdin
+
+    - name: Push image
+      run: |
+        IMAGE_ID=$DOCKER_ORG/$IMAGE_NAME
+        BASE_VERSION=$(docker run temp-image python -c "import coffea; print(coffea.__version__)")
+        BUILD=$(git rev-parse --short HEAD)
+        VERSION=${BASE_VERSION}+g${BUILD}
+
+        echo IMAGE_ID=$IMAGE_ID
+        echo VERSION=$VERSION
+
+        docker tag temp-image $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
+
+        docker tag temp-image $IMAGE_ID:latest
+        docker push $IMAGE_ID:latest
