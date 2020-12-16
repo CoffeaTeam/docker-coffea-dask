@@ -29,7 +29,7 @@ jobs:
         IMAGE_ID=$DOCKER_ORG/$IMAGE_NAME
         BASE_VERSION=$(docker run temp-image python -c "import coffea; print(coffea.__version__)")
         BUILD=$(git rev-parse --short HEAD)
-        VERSION=${BASE_VERSION}+g${BUILD}
+        VERSION=${BASE_VERSION}-g${BUILD}
 
         echo IMAGE_ID=$IMAGE_ID
         echo VERSION=$VERSION
