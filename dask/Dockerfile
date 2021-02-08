@@ -9,6 +9,7 @@ RUN conda install --yes --freeze-installed \
       bokeh==2.2.3 \
       dask==2021.2.0 \
       distributed==2021.2.0 \
+      dask-jobqueue \
       nomkl \
       scipy==1.5.3 \
       tini==0.18.0 \
