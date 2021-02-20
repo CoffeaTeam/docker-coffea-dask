@@ -1,0 +1,28 @@
+name: Receive repository dispatch event from docker-coffea-base
+
+on:
+  repository_dispatch:
+    types: [coffea-base]
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    if: github.repository == 'coffeateam/docker-coffea-dask'
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update coffea version
+        run: |
+          sed -i dask/Dockerfile "1c FROM ${{ github.event.client_payload.image_tag }}"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update coffea-base version to ${{ github.event.client_payload.image_tag }}"
+          title: "Update coffea-base version to ${{ github.event.client_payload.image_tag }}"
+          reviewers: "oshadura"
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          branch: "upgrade-coffea-version"
+          body: |
+            A new docker-coffea-base version has been detected.
+            Updated `Dockerfile`s to use `${{ github.event.client_payload.image_tag }}`.
