@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base:latest
+FROM coffeateam/coffea-base:0.7.1
 
 # Dask + Distributed
 RUN conda install --yes --freeze-installed \
