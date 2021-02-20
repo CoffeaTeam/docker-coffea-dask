@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update coffea version
         run: |
-          sed -i dask/Dockerfile "1c FROM ${{ github.event.client_payload.image_tag }}"
+          sed -i "1c FROM ${{ github.event.client_payload.image_tag }}" dask/Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
