@@ -14,6 +14,7 @@ RUN conda install --yes --freeze-installed \
       scipy==1.5.3 \
       tini==0.18.0 \
       jupyter-server-proxy \
+      htcondor \
       && conda clean --all -f -y \
       && conda build purge-all
 
