@@ -1,42 +1,60 @@
 name: Publish images
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   DOCKER_ORG: coffeateam
-  IMAGE_NAME: coffea-dask
 
 jobs:
-
-  publish:
+  matrix-build:
+    strategy:
+      fail-fast: false
+      matrix:
+        IMAGE_DIR: [dask, dask-cc7]
+    name: ${{ matrix.IMAGE_DIR }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Set Job Environment Variables
+      run: |
+        IMAGE=coffea-${{ matrix.IMAGE_DIR }}
+        IMAGE_ID=${DOCKER_ORG}/$IMAGE_NAME
+        echo "IMAGE=${IMAGE}" >> $GITHUB_ENV
+        echo "IMAGE_ID=${IMAGE_ID}" >> $GITHUB_ENV
+
     - name: Build Image
       run: |
-        docker build -t temp-image dask
+        cd ${{ matrix.IMAGE_DIR }}
+        docker build -t temp-image ${{ matrix.IMAGE_DIR }}
 
     - name: Log into registry
       run: echo "${{ secrets.DOCKERHUB_ACCESS_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_ACCOUNT }} --password-stdin
 
     - name: Push image
       run: |
-        IMAGE_ID=$DOCKER_ORG/$IMAGE_NAME
         BASE_VERSION=$(docker run temp-image python -c "import coffea; print(coffea.__version__)")
         BUILD=$(git rev-parse --short HEAD)
         VERSION=${BASE_VERSION}-g${BUILD}
 
-        echo IMAGE_ID=$IMAGE_ID
         echo VERSION=$VERSION
 
-        docker tag temp-image $IMAGE_ID:$VERSION
-        docker push $IMAGE_ID:$VERSION
+        docker tag temp-image ${IMAGE_ID}:$VERSION
+        docker push ${IMAGE_ID}:$VERSION
 
-        docker tag temp-image $IMAGE_ID:latest
-        docker push $IMAGE_ID:latest
+        docker tag temp-image ${IMAGE_ID}:latest
+        docker push ${IMAGE_ID}:latest
+        echo "image_tag=${IMAGE_ID}:$VERSION" >> $GITHUB_ENV
+
+    - name: Send dispatch event downstream
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        repository: CoffeaTeam/docker-${{ matrix.IMAGE_DIR }}
+        event-type: $IMAGE
+        client-payload: '{"ref": "${{ github.ref }}", "image_tag": "${{ env.image_tag }}"}'
