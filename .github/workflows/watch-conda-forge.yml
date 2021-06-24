@@ -17,16 +17,28 @@ jobs:
         with:
           org: "conda-forge"
           package: "dask"
-      - name: Find and Replace Dask
+      - name: Find and Replace Dask in dask
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "dask/"
           find: "dask==.* "
           replace: "dask==${{ steps.latest_version.outputs.version }} "
-      - name: Find and Replace Distributed
+      - name: Find and Replace Distributed in dask
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "dask/"
+          find: "distributed==.* "
+          replace: "distributed==${{ steps.latest_version.outputs.version }} "
+      - name: Find and Replace Dask in dask-cc7
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "dask-cc7/"
+          find: "dask==.* "
+          replace: "dask==${{ steps.latest_version.outputs.version }} "
+      - name: Find and Replace Distributed in dask-cc7
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "dask-cc7/"
           find: "distributed==.* "
           replace: "distributed==${{ steps.latest_version.outputs.version }} "
       - name: Create Pull Request
