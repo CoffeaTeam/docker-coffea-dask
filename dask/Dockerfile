@@ -7,8 +7,8 @@ RUN conda install --yes --freeze-installed \
       python-blosc \
       cytoolz \
       bokeh==2.2.3 \
-      dask==2021.7.0 \
-      distributed==2021.7.0 \
+      dask==2021.7.1 \
+      distributed==2021.7.1 \
       dask-jobqueue \
       nomkl \
       scipy==1.5.3 \
