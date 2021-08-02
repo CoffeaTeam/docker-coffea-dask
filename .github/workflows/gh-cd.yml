@@ -38,8 +38,9 @@ jobs:
     - name: Push image
       run: |
         BASE_VERSION=$(docker run temp-image python -c "import coffea; print(coffea.__version__)")
+        FASTJET_VERSION=$(docker run temp-image python -c "import fastjet; print(fastjet.__version__)")
         BUILD=$(git rev-parse --short HEAD)
-        VERSION=${BASE_VERSION}-g${BUILD}
+        VERSION=${BASE_VERSION}-fastjet-${FASTJET_VERSION}-g${BUILD}
 
         echo VERSION=$VERSION
 
