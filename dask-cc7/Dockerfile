@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base-cc7:0.7.5
+FROM coffeateam/coffea-base-cc7:0.7.5-fastjet-3.3.4.0rc6
 
 # Dask + Distributed
 RUN conda install --yes --freeze-installed \
