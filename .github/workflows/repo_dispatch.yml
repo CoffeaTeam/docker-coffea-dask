@@ -22,7 +22,7 @@ jobs:
           title: "Update coffea-base version to ${{ github.event.client_payload.image_tag }}"
           reviewers: "oshadura"
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          branch: "upgrade-coffea-version"
+          branch: "upgrade-coffea-base-version"
           body: |
             A new docker-coffea-base version has been detected.
             Updated `Dockerfile`s to use `${{ github.event.client_payload.image_tag }}`.
