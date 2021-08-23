@@ -6,10 +6,10 @@
 
 Latest DockerHub Images: https://hub.docker.com/orgs/coffeateam/repositories
 
-| Image           | Description                                   |  Size | Pulls | Version | Layers |
-|-----------------|-----------------------------------------------|--------------|-------------|-------------|-------------|
-| coffea-dask     | Debian Dask Coffea image with latest XrootD and CA certicates            | ![](https://img.shields.io/docker/image-size/coffeateam/coffea-dask?sort=date) | ![](https://img.shields.io/docker/pulls/coffeateam/coffea-dask?sort=date) | ![](https://img.shields.io/docker/v/coffeateam/coffea-dask?sort=date) | ![](https://img.shields.io/microbadger/layers/coffeateam/coffea-dask)
-| coffea-dask     | Centos7 Dask Coffea image with latest XrootD and CA certicates            | ![](https://img.shields.io/docker/image-size/coffeateam/coffea-dask-cc7?sort=date) | ![](https://img.shields.io/docker/pulls/coffeateam/coffea-dask-cc7?sort=date) | ![](https://img.shields.io/docker/v/coffeateam/coffea-dask-cc7?sort=date) | ![](https://img.shields.io/microbadger/layers/coffeateam/coffea-dask-cc7)
+| Image           | Description                                   |  Size | Pulls | Version | 
+|-----------------|-----------------------------------------------|--------------|-------------|-------------|
+| coffea-dask     | Debian Dask Coffea image with latest XrootD and CA certicates            | ![](https://img.shields.io/docker/image-size/coffeateam/coffea-dask?sort=date) | ![](https://img.shields.io/docker/pulls/coffeateam/coffea-dask?sort=date) | ![](https://img.shields.io/docker/v/coffeateam/coffea-dask?sort=date) 
+| coffea-dask-cc7     | Centos7 Dask Coffea image with latest XrootD and CA certicates            | ![](https://img.shields.io/docker/image-size/coffeateam/coffea-dask-cc7?sort=date) | ![](https://img.shields.io/docker/pulls/coffeateam/coffea-dask-cc7?sort=date) | ![](https://img.shields.io/docker/v/coffeateam/coffea-dask-cc7?sort=date) 
 
 
 ## TL;DR
