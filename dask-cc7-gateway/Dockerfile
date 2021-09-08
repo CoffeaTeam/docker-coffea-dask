@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-dask:latest
+FROM coffeateam/coffea-base-cc7:0.7.7-fastjet-3.3.4.0rc9
 
 # Relevant for dask-gateway compatibility
 RUN conda install --yes \
