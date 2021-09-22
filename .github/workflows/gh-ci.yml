@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        IMAGE_DIR: [dask, dask-cc7]
+        IMAGE_DIR: [dask, dask-cc7, dask-cc7-gateway]
     name: ${{ matrix.IMAGE_DIR }}
     runs-on: ubuntu-latest
     steps:
