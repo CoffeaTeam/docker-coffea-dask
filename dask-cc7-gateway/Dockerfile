@@ -1,7 +1,7 @@
 FROM coffeateam/coffea-base-cc7:0.7.8-fastjet-3.3.4.0rc9
 
 # Relevant for dask-gateway compatibility
-RUN conda install --yes \
+RUN mamba install --yes \
       -c conda-forge \
       conda-build \
       dask==2.30.0 \
@@ -12,5 +12,4 @@ RUN conda install --yes \
       toolz==0.11.1 \
       numpy==1.19.2 \
       dask-jobqueue \
-      && conda clean --all -f -y \
-      && conda build purge-all
+      && mamba clean -tipsy

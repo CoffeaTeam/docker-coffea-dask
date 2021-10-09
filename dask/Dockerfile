@@ -1,7 +1,7 @@
 FROM coffeateam/coffea-base:0.7.8-fastjet-3.3.4.0rc9
 
 # Dask + Distributed
-RUN conda install --yes --freeze-installed \
+RUN mamba install --yes \
       -c conda-forge \
       conda-build \
       python-blosc \
@@ -16,7 +16,6 @@ RUN conda install --yes --freeze-installed \
       tini==0.18.0 \
       jupyter-server-proxy \
       htcondor \
-      && conda clean --all -f -y \
-      && conda build purge-all
+      && mamba clean -tipsy
 
 ENTRYPOINT ["tini", "-g", "--"]
