@@ -15,7 +15,7 @@ RUN mamba install --yes \
       scipy==1.5.3 \
       tini==0.18.0 \
       jupyter-server-proxy \
-      htcondor \
+      htcondor==9.2.0 \
       && mamba clean -tipsy
 
 ENTRYPOINT ["tini", "-g", "--"]
