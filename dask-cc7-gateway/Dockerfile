@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base-cc7:0.7.10-fastjet-3.3.4.0rc9
+FROM coffeateam/coffea-base-cc7:0.7.11-fastjet-3.3.4.0rc9
 
 # Relevant for dask-gateway compatibility
 RUN mamba install --yes \
