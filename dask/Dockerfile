@@ -6,14 +6,14 @@ RUN mamba install --yes \
       conda-build \
       python-blosc \
       cytoolz \
-      bokeh==2.2.3 \
+      bokeh \
       dask==2022.4.0 \
       distributed==2022.4.0 \
       dask-gateway==0.9.0 \
       dask-jobqueue \
       nomkl \
       scipy==1.5.3 \
-      tini==0.18.0 \
+      tini \
       jupyter-server-proxy \
       htcondor==9.2.0 \
       && mamba clean -tipsy
