@@ -13,3 +13,9 @@ RUN mamba install --yes \
       numpy==1.19.2 \
       dask-jobqueue \
       && mamba clean -tipsy
+
+# Patching distriibuted temporarily to allow specifying host SNI for tcp connections
+# Waiting for: https://github.com/holzman/distributed/commit/a7b624354fb6a24517e4354d3ea0831f84f0fd3e
+COPY ./distributed.patch/cli/dask_worker.py  /usr/local/lib/python3.8/site-packages/distributed/cli/dask_worker.py
+COPY ./distributed.patch/comm/tcp.py /usr/local/lib/python3.8/site-packages/distributed/comm/tcp.py
+COPY ./distributed.patch/worker.py /usr/local/lib/python3.8/site-packages/distributed/worker.py
