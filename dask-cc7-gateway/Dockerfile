@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base-cc7:0.7.14-fastjet-3.3.4.0rc9
+FROM coffeateam/coffea-base-cc7:0.7.15-fastjet-3.3.4.0rc9
 
 RUN yum -y install patch && yum clean all
 
