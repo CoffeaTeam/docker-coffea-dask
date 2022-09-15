@@ -12,9 +12,7 @@ RUN mamba install --yes \
       cloudpickle==1.6.0 \
       tornado==6.1 \
       toolz==0.11.1 \
-      numpy==1.19.2 \
-      "pyarrow<9" \
-      "onnxruntime<=1.11" \
+      numpy==1.19.5 \
       dask-jobqueue \
       && mamba clean --all --yes
 
