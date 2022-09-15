@@ -14,6 +14,7 @@ RUN mamba install --yes \
       toolz==0.11.1 \
       numpy==1.19.2 \
       "pyarrow<9" \
+      "onnxruntime<1.12" \
       dask-jobqueue \
       && mamba clean --all --yes
 
