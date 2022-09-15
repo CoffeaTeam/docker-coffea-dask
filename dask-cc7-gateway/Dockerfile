@@ -13,6 +13,7 @@ RUN mamba install --yes \
       tornado==6.1 \
       toolz==0.11.1 \
       numpy==1.19.2 \
+      "pyarrow<9" \
       dask-jobqueue \
       && mamba clean --all --yes
 
