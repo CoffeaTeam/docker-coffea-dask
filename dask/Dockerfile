@@ -11,6 +11,7 @@ RUN mamba install --yes \
       distributed==2022.7.1 \
       dask-gateway==0.9.0 \
       dask-jobqueue \
+      nomkl \
       scipy==1.5.3 \
       tini \
       jupyter-server-proxy \
