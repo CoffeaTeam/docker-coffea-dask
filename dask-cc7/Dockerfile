@@ -7,8 +7,8 @@ RUN mamba install --yes \
       python-blosc \
       cytoolz \
       bokeh \
-      dask==2022.7.1 \
-      distributed==2022.7.1 \
+      dask==2022.9.2 \
+      distributed==2022.9.2 \
       dask-gateway==0.9.0 \
       dask-jobqueue \
       nomkl \
