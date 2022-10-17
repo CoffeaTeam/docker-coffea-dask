@@ -1,4 +1,6 @@
-FROM coffeateam/coffea-base-cc7:0.7.14-fastjet-3.3.4.0rc9
+FROM coffeateam/coffea-base-cc7:0.7.19-fastjet-3.3.4.0rc9
+
+RUN yum -y install patch && yum clean all
 
 RUN yum -y install patch && yum clean all
 
@@ -16,4 +18,4 @@ RUN mamba install --yes \
       numpy \
       dask-gateway==2022.10.0\
       dask-jobqueue \
-      && mamba clean -tipsy
+      && mamba clean --all --yes
