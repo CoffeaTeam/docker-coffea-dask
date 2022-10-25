@@ -18,4 +18,7 @@ RUN mamba install --yes \
       htcondor==9.2.0 \
       && mamba clean --yes --all
 
+# Add mount point for Singularity/Apptainer
+RUN mkdir -p /opt/conda
+
 ENTRYPOINT ["tini", "-g", "--"]

@@ -17,3 +17,6 @@ RUN mamba install --yes \
       dask-gateway==2022.10.0\
       dask-jobqueue \
       && mamba clean --all --yes
+
+# Add mount point for Singularity/Apptainer
+RUN mkdir -p /opt/conda
