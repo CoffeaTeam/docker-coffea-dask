@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base-cc7:0.7.19-fastjet-3.3.4.0rc9
+FROM coffeateam/coffea-base-cc7:0.7.20-fastjet-3.4.0.0rc2
 
 # Dask + Distributed
 RUN mamba install --yes \
