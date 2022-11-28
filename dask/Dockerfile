@@ -1,12 +1,13 @@
 FROM coffeateam/coffea-base:0.7.20-fastjet-3.4.0.1
 
 # Dask + Distributed
+# remember to check bokeh/dask compatibility next time we update dask
 RUN mamba install --yes \
       -c conda-forge \
       conda-build \
       python-blosc \
       cytoolz \
-      bokeh==2.4.3 \  # remember to check this next time we update dask
+      bokeh==2.4.3 \
       dask==2022.9.2 \
       distributed==2022.9.2 \
       dask-gateway==0.9.0 \
