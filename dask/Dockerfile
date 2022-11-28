@@ -6,7 +6,7 @@ RUN mamba install --yes \
       conda-build \
       python-blosc \
       cytoolz \
-      bokeh \
+      bokeh==2.4.3 \  # remember to check this next time we update dask
       dask==2022.9.2 \
       distributed==2022.9.2 \
       dask-gateway==0.9.0 \
