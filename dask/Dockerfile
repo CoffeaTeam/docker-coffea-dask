@@ -5,6 +5,7 @@ FROM coffeateam/coffea-base:0.7.20-fastjet-3.4.0.1
 RUN mamba install --yes \
       -c conda-forge \
       conda-build \
+      jemalloc \
       python-blosc \
       cytoolz \
       bokeh==2.4.3 \
