@@ -6,6 +6,7 @@ RUN yum -y install patch && yum clean all
 RUN mamba install --yes \
       -c conda-forge \
       conda-build \
+      jemalloc \
       ipympl \
       aiohttp \
       click>=8.1.3 \
