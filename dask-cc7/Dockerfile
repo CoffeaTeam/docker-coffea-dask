@@ -18,7 +18,8 @@ RUN mamba install --yes \
       tini \
       jupyter-server-proxy \
       htcondor==9.2.0 \
-      && mamba clean --yes --all
+      && mamba clean --all --yes \
+      && pip install --no-cache-dir fsspec-xrootd
 
 # Add mount point for Singularity/Apptainer
 RUN mkdir -p /opt/conda
