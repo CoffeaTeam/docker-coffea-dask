@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base:0.7.20-fastjet-3.4.0.1
+FROM coffeateam/coffea-base:0.7.21-fastjet-3.4.0.1
 
 # Dask + Distributed
 # remember to check bokeh/dask compatibility next time we update dask
