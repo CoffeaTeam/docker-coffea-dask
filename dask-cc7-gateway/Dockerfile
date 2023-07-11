@@ -10,12 +10,12 @@ RUN mamba install --yes \
       ipympl \
       aiohttp \
       click>=8.1.3 \
-      dask>=2022.6.0 \
-      distributed==2022.10.0 \
+      dask>=2022.4.0 \
+      distributed>=2022.4.0 \
       pyyaml \
       tornado \
       numpy \
-      dask-gateway==2022.10.0\
+      dask-gateway==2023.1.1 \
       dask-jobqueue \
       && mamba clean --all --yes \
       && pip install --no-cache-dir fsspec-xrootd
