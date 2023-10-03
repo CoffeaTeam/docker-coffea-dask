@@ -11,10 +11,10 @@ RUN mamba install --yes \
       bokeh==2.4.3 \
       dask==2022.05.0 \
       distributed==2022.05.0 \
-      dask-gateway==0.9.0 \
+      dask-gateway \
       dask-jobqueue==0.7.3 \
       nomkl \
-      scipy==1.5.3 \
+      scipy \
       tini \
       jupyter-server-proxy \
       htcondor==9.2.0 \
