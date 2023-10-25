@@ -70,13 +70,13 @@ jobs:
       env:
         image_dir: ${{ matrix.image_dir }}
         PYTHON: ${{ matrix.python }}
+        sha: ${{ env.GITHUB_SHA }}
       run: |
-        image_tag=$(eval echo eval "$(grep FROM dask/Dockerfile | cut -d ' ' -f 2)")
-        BUILD=$(git rev-parse --short HEAD)
-        version=${image_tag}-g${BUILD}
+        image_tag=$(eval echo "$(grep FROM ${image_dir}/Dockerfile | cut -d ':' -f 2)")
+        version=${image_tag}-g${sha:0:5}
         image="coffeateam/coffea-${image_dir}"
-        tag="${image}:${version}
-        tags=${image}:latest-py${matrix.python},$tag
+        tag="${image}:${version}"
+        tags=${image}:latest-py${PYTHON},$tag
 
         echo "::set-output name=tags::${tags}"
         echo "::set-output name=tag::${tag}"
@@ -85,9 +85,9 @@ jobs:
       uses: docker/build-push-action@v3.0.0
       with:
         context: ${{ matrix.image_dir }}
-        file: ${{ matrix.image_dir }}/py${{ matrix.python}}.Dockerfile
+        file: ${{ matrix.image_dir }}/Dockerfile
         push: ${{  github.event_name == 'push' }}
         platforms: linux/amd64
         tags: ${{ steps.tags.outputs.tags }}
         build-args: |
-          python=${{ matrix.python }}
+          PYTHON=${{ matrix.python }}
