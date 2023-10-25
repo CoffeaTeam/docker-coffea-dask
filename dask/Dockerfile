@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base:0.7.21-fastjet-3.4.0.1
+FROM coffeateam/coffea-base-almalinux8:coffeateam/coffea-base-almalinux8:latest-py3.10,coffeateam/coffea-base-almalinux8:0.7.21-py3.10
 
 # Dask + Distributed
 # remember to check bokeh/dask compatibility next time we update dask
