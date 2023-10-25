@@ -1,4 +1,4 @@
-FROM coffeateam/coffea-base-cc7:0.7.21-fastjet-3.4.0.1
+FROM coffeateam/coffea-base-cc7:coffeateam/coffea-base-cc7:latest-py3.10,coffeateam/coffea-base-cc7:0.7.21-py3.10
 
 RUN yum -y install patch && yum clean all
 
