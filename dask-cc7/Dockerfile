@@ -1,4 +1,5 @@
-FROM coffeateam/coffea-base-cc7:0.7.21-fastjet-3.4.0.1
+ARG PYTHON=3.8
+FROM coffeateam/coffea-base-cc7:0.7.21-py${PYTHON}
 
 # Dask + Distributed
 # remember to check bokeh/dask compatibility next time we update dask
