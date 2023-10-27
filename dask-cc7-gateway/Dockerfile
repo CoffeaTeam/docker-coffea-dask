@@ -1,5 +1,5 @@
 ARG PYTHON=3.8
-FROM coffeateam/coffea-base-cc7:0.7.21-py${PYTHON}
+FROM coffeateam/coffea-base-cc7:0.7.21-py3.10
 
 RUN yum -y install patch && yum clean all
 
