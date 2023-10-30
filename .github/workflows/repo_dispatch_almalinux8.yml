@@ -16,7 +16,7 @@ jobs:
           old_image=$(grep FROM dask-almalinux8/Dockerfile)
           new_image="FROM ${{ github.event.client_payload.image_tag }}"
           sed -i "s#$old_image#$new_image#g" dask-almalinux8/Dockerfile
-          python_fix_tag_string=$(echo $old_image | cut -d '-' -f 3)
+          python_fix_tag_string=$(echo $old_image | cut -d '-' -f 4)
           python_tag=$(grep FROM dask-almalinux8/Dockerfile | cut -d '-' -f 3)
           sed -i "s#$python_tag#$python_fix_tag_string#g" dask-almalinux8/Dockerfile
       - name: Create Pull Request
