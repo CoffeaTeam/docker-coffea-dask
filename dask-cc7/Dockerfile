@@ -1,5 +1,5 @@
 ARG PYTHON=3.8
-FROM coffeateam/coffea-base-cc7:0.7.21-py${PYTHON}
+FROM coffeateam/coffea-base-py${PYTHON}-py3.10
 
 # Dask + Distributed
 # remember to check bokeh/dask compatibility next time we update dask
