@@ -16,8 +16,8 @@ jobs:
           old_image=$(grep FROM dask-cc7/Dockerfile)
           new_image="FROM ${{ github.event.client_payload.image_tag }}"
           sed -i "s#$old_image#$new_image#g" dask-cc7/Dockerfile
-          python_fix_tag_string=$(echo $old_image | cut -d '-' -f 3)
-          python_tag=$(grep FROM dask-cc7/Dockerfile | cut -d '-' -f 3)
+          python_fix_tag_string=$(echo $old_image | cut -d '-' -f 4)
+          python_tag=$(grep FROM dask-cc7/Dockerfile | cut -d '-' -f 4)
           sed -i "s#$python_tag#$python_fix_tag_string#g" dask-cc7/Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
