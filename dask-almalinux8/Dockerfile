@@ -1,5 +1,5 @@
 ARG PYTHON=3.8
-FROM coffeateam/coffea-base-almalinux8:0.7.21-py${PYTHON}
+FROM coffeateam/coffea-base-almalinux8:0.7.22-py${PYTHON}
 
 # Dask + Distributed
 # remember to check bokeh/dask compatibility next time we update dask
