@@ -21,37 +21,37 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@3.0.2
         with:
           include: "dask/"
-          find: "dask==.* "
+          find: "\bdask==.*\b"
           replace: "dask==${{ steps.latest_version.outputs.version }} "
       - name: Find and Replace Distributed in dask
         uses: jacobtomlinson/gha-find-replace@3.0.2
         with:
           include: "dask/"
-          find: "distributed==.* "
+          find: "\bdistributed==.*\b"
           replace: "distributed==${{ steps.latest_version.outputs.version }} "
       - name: Find and Replace Dask in dask-cc7
         uses: jacobtomlinson/gha-find-replace@3.0.2
         with:
           include: "dask-cc7/"
-          find: "dask==.* "
+          find: "\bdask==.*\b"
           replace: "dask==${{ steps.latest_version.outputs.version }} "
       - name: Find and Replace Distributed in dask-cc7
         uses: jacobtomlinson/gha-find-replace@3.0.2
         with:
           include: "dask-cc7/"
-          find: "distributed==.* "
+          find: "\bdistributed==.*\b"
           replace: "distributed==${{ steps.latest_version.outputs.version }} "
       - name: Find and Replace Dask in dask-almalinux8
         uses: jacobtomlinson/gha-find-replace@3.0.2
         with:
           include: "dask-almalinux8/"
-          find: "dask==.* "
+          find: "\bdask==.*\b"
           replace: "dask==${{ steps.latest_version.outputs.version }} "
       - name: Find and Replace Distributed in dask-almalinux8
         uses: jacobtomlinson/gha-find-replace@3.0.2
         with:
           include: "dask-almalinux8/"
-          find: "distributed==.* "
+          find: "\bdistributed==.*\b"
           replace: "distributed==${{ steps.latest_version.outputs.version }} "
   
       - name: Create Pull Request
