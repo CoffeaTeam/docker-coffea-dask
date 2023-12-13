@@ -25,4 +25,8 @@ RUN mamba install --yes \
 # Add mount point for Singularity/Apptainer
 RUN mkdir -p /opt/conda
 
+RUN curl -L https://github.com/opensciencegrid/osg-vo-config/archive/refs/heads/master.tar.gz | \
+    tar -xz --strip-components=1 --directory=/etc/grid-security --wildcards */vomses */vomsdir && \
+    mv /etc/grid-security/vomses /etc
+
 ENTRYPOINT ["tini", "-g", "--"]
