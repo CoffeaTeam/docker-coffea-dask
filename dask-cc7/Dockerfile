@@ -6,6 +6,7 @@ FROM coffeateam/coffea-base-cc7:0.7.22-py${PYTHON}
 RUN mamba install --yes \
       -c conda-forge \
       conda-build \
+      curl \
       jemalloc \
       python-blosc \
       cytoolz \
